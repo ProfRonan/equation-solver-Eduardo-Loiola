@@ -1,0 +1,812 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.10, pytest-7.3.1, pluggy-1.0.0
+rootdir: /home/seuronao/Documents/Equation Solver-04-24-2023-03-36-22/Eduardo-Loiola
+collected 20 items
+
+test_grau_1.py FFFFFFF                                                   [ 35%]
+test_grau_2.py FFFFFFFF                                                  [ 75%]
+test_grau_invalido.py FFFFF                                              [100%]
+
+=================================== FAILURES ===================================
+________________ test_grau_1_a_0[test_input0-expected_output0] _________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f94ac17e050>
+test_input = []
+expected_output = ['A equação é do primeiro grau', 'Valor de a inválido']
+
+    @pytest.mark.parametrize(
+        "test_input, expected_output",
+        [
+            (["1", "0"], ["A equação é do primeiro grau", "Valor de a inválido"]),
+        ],
+    )
+    def test_grau_1_a_0(monkeypatch: MonkeyPatch, test_input: list[str], expected_output: str):
+        mocked_input = lambda prompt="": test_input.pop(0)
+    
+        mocked_stdout = io.StringIO()
+    
+        with monkeypatch.context() as m:
+            m.setattr(builtins, "input", mocked_input)
+            m.setattr(sys, "stdout", mocked_stdout)
+    
+            sys.modules.pop("main", None)
+            importlib.import_module(name="main", package="files")
+    
+        for output in expected_output:
+>           assert output in mocked_stdout.getvalue().strip()
+E           AssertionError: assert 'A equação é do primeiro grau' in 'Equação do primeiro grau\nValor Inválido.'
+E            +  where 'Equação do primeiro grau\nValor Inválido.' = <built-in method strip of str object at 0x7f94ac2df130>()
+E            +    where <built-in method strip of str object at 0x7f94ac2df130> = 'Equação do primeiro grau\nValor Inválido.\n'.strip
+E            +      where 'Equação do primeiro grau\nValor Inválido.\n' = <built-in method getvalue of _io.StringIO object at 0x7f94ac1a6320>()
+E            +        where <built-in method getvalue of _io.StringIO object at 0x7f94ac1a6320> = <_io.StringIO object at 0x7f94ac1a6320>.getvalue
+
+test_grau_1.py:29: AssertionError
+__________________ test_grau_1[test_input0-expected_output0] ___________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f94ac1ce560>
+test_input = [], expected_output = ['A equação é do primeiro grau', '0.00']
+
+    @pytest.mark.parametrize(
+        "test_input, expected_output",
+        [
+            (["1", "1", "0"], ["A equação é do primeiro grau", "0.00"]),
+            (["1", "2", "0"], ["A equação é do primeiro grau", "0.00"]),
+            (["1", "10", "0"], ["A equação é do primeiro grau", "0.00"]),
+            (["1", "1", "-5"], ["A equação é do primeiro grau", "5.00"]),
+            (["1", "2", "4"], ["A equação é do primeiro grau", "-2.00"]),
+            (["1", "2", "-4"], ["A equação é do primeiro grau", "2.00"]),
+        ],
+    )
+    def test_grau_1(monkeypatch: MonkeyPatch, test_input: list[str], expected_output: list[str]):
+        mocked_input = lambda prompt="": test_input.pop(0)
+    
+        mocked_stdout = io.StringIO()
+    
+        with monkeypatch.context() as m:
+            m.setattr(builtins, "input", mocked_input)
+            m.setattr(sys, "stdout", mocked_stdout)
+    
+            sys.modules.pop("main", None)
+            importlib.import_module(name="main", package="files")
+    
+        for output in expected_output:
+>           assert output in mocked_stdout.getvalue().strip()
+E           AssertionError: assert 'A equação é do primeiro grau' in 'Equação do primeiro grau\no valor da raiz é 0.00'
+E            +  where 'Equação do primeiro grau\no valor da raiz é 0.00' = <built-in method strip of str object at 0x7f94ac1c7330>()
+E            +    where <built-in method strip of str object at 0x7f94ac1c7330> = 'Equação do primeiro grau\no valor da raiz é 0.00\n'.strip
+E            +      where 'Equação do primeiro grau\no valor da raiz é 0.00\n' = <built-in method getvalue of _io.StringIO object at 0x7f94ac1a6f80>()
+E            +        where <built-in method getvalue of _io.StringIO object at 0x7f94ac1a6f80> = <_io.StringIO object at 0x7f94ac1a6f80>.getvalue
+
+test_grau_1.py:56: AssertionError
+__________________ test_grau_1[test_input1-expected_output1] ___________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f94ac17f130>
+test_input = [], expected_output = ['A equação é do primeiro grau', '0.00']
+
+    @pytest.mark.parametrize(
+        "test_input, expected_output",
+        [
+            (["1", "1", "0"], ["A equação é do primeiro grau", "0.00"]),
+            (["1", "2", "0"], ["A equação é do primeiro grau", "0.00"]),
+            (["1", "10", "0"], ["A equação é do primeiro grau", "0.00"]),
+            (["1", "1", "-5"], ["A equação é do primeiro grau", "5.00"]),
+            (["1", "2", "4"], ["A equação é do primeiro grau", "-2.00"]),
+            (["1", "2", "-4"], ["A equação é do primeiro grau", "2.00"]),
+        ],
+    )
+    def test_grau_1(monkeypatch: MonkeyPatch, test_input: list[str], expected_output: list[str]):
+        mocked_input = lambda prompt="": test_input.pop(0)
+    
+        mocked_stdout = io.StringIO()
+    
+        with monkeypatch.context() as m:
+            m.setattr(builtins, "input", mocked_input)
+            m.setattr(sys, "stdout", mocked_stdout)
+    
+            sys.modules.pop("main", None)
+            importlib.import_module(name="main", package="files")
+    
+        for output in expected_output:
+>           assert output in mocked_stdout.getvalue().strip()
+E           AssertionError: assert 'A equação é do primeiro grau' in 'Equação do primeiro grau\no valor da raiz é 0.00'
+E            +  where 'Equação do primeiro grau\no valor da raiz é 0.00' = <built-in method strip of str object at 0x7f94ac1c7530>()
+E            +    where <built-in method strip of str object at 0x7f94ac1c7530> = 'Equação do primeiro grau\no valor da raiz é 0.00\n'.strip
+E            +      where 'Equação do primeiro grau\no valor da raiz é 0.00\n' = <built-in method getvalue of _io.StringIO object at 0x7f94ac1a71c0>()
+E            +        where <built-in method getvalue of _io.StringIO object at 0x7f94ac1a71c0> = <_io.StringIO object at 0x7f94ac1a71c0>.getvalue
+
+test_grau_1.py:56: AssertionError
+__________________ test_grau_1[test_input2-expected_output2] ___________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f94ac17ee60>
+test_input = [], expected_output = ['A equação é do primeiro grau', '0.00']
+
+    @pytest.mark.parametrize(
+        "test_input, expected_output",
+        [
+            (["1", "1", "0"], ["A equação é do primeiro grau", "0.00"]),
+            (["1", "2", "0"], ["A equação é do primeiro grau", "0.00"]),
+            (["1", "10", "0"], ["A equação é do primeiro grau", "0.00"]),
+            (["1", "1", "-5"], ["A equação é do primeiro grau", "5.00"]),
+            (["1", "2", "4"], ["A equação é do primeiro grau", "-2.00"]),
+            (["1", "2", "-4"], ["A equação é do primeiro grau", "2.00"]),
+        ],
+    )
+    def test_grau_1(monkeypatch: MonkeyPatch, test_input: list[str], expected_output: list[str]):
+        mocked_input = lambda prompt="": test_input.pop(0)
+    
+        mocked_stdout = io.StringIO()
+    
+        with monkeypatch.context() as m:
+            m.setattr(builtins, "input", mocked_input)
+            m.setattr(sys, "stdout", mocked_stdout)
+    
+            sys.modules.pop("main", None)
+            importlib.import_module(name="main", package="files")
+    
+        for output in expected_output:
+>           assert output in mocked_stdout.getvalue().strip()
+E           AssertionError: assert 'A equação é do primeiro grau' in 'Equação do primeiro grau\no valor da raiz é 0.00'
+E            +  where 'Equação do primeiro grau\no valor da raiz é 0.00' = <built-in method strip of str object at 0x7f94ac2dfeb0>()
+E            +    where <built-in method strip of str object at 0x7f94ac2dfeb0> = 'Equação do primeiro grau\no valor da raiz é 0.00\n'.strip
+E            +      where 'Equação do primeiro grau\no valor da raiz é 0.00\n' = <built-in method getvalue of _io.StringIO object at 0x7f94ac1a70a0>()
+E            +        where <built-in method getvalue of _io.StringIO object at 0x7f94ac1a70a0> = <_io.StringIO object at 0x7f94ac1a70a0>.getvalue
+
+test_grau_1.py:56: AssertionError
+__________________ test_grau_1[test_input3-expected_output3] ___________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f94ac17fbe0>
+test_input = [], expected_output = ['A equação é do primeiro grau', '5.00']
+
+    @pytest.mark.parametrize(
+        "test_input, expected_output",
+        [
+            (["1", "1", "0"], ["A equação é do primeiro grau", "0.00"]),
+            (["1", "2", "0"], ["A equação é do primeiro grau", "0.00"]),
+            (["1", "10", "0"], ["A equação é do primeiro grau", "0.00"]),
+            (["1", "1", "-5"], ["A equação é do primeiro grau", "5.00"]),
+            (["1", "2", "4"], ["A equação é do primeiro grau", "-2.00"]),
+            (["1", "2", "-4"], ["A equação é do primeiro grau", "2.00"]),
+        ],
+    )
+    def test_grau_1(monkeypatch: MonkeyPatch, test_input: list[str], expected_output: list[str]):
+        mocked_input = lambda prompt="": test_input.pop(0)
+    
+        mocked_stdout = io.StringIO()
+    
+        with monkeypatch.context() as m:
+            m.setattr(builtins, "input", mocked_input)
+            m.setattr(sys, "stdout", mocked_stdout)
+    
+            sys.modules.pop("main", None)
+            importlib.import_module(name="main", package="files")
+    
+        for output in expected_output:
+>           assert output in mocked_stdout.getvalue().strip()
+E           AssertionError: assert 'A equação é do primeiro grau' in 'Equação do primeiro grau\no valor da raiz é -5.00'
+E            +  where 'Equação do primeiro grau\no valor da raiz é -5.00' = <built-in method strip of str object at 0x7f94ac1c73b0>()
+E            +    where <built-in method strip of str object at 0x7f94ac1c73b0> = 'Equação do primeiro grau\no valor da raiz é -5.00\n'.strip
+E            +      where 'Equação do primeiro grau\no valor da raiz é -5.00\n' = <built-in method getvalue of _io.StringIO object at 0x7f94ac1a7130>()
+E            +        where <built-in method getvalue of _io.StringIO object at 0x7f94ac1a7130> = <_io.StringIO object at 0x7f94ac1a7130>.getvalue
+
+test_grau_1.py:56: AssertionError
+__________________ test_grau_1[test_input4-expected_output4] ___________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f94ac3112a0>
+test_input = [], expected_output = ['A equação é do primeiro grau', '-2.00']
+
+    @pytest.mark.parametrize(
+        "test_input, expected_output",
+        [
+            (["1", "1", "0"], ["A equação é do primeiro grau", "0.00"]),
+            (["1", "2", "0"], ["A equação é do primeiro grau", "0.00"]),
+            (["1", "10", "0"], ["A equação é do primeiro grau", "0.00"]),
+            (["1", "1", "-5"], ["A equação é do primeiro grau", "5.00"]),
+            (["1", "2", "4"], ["A equação é do primeiro grau", "-2.00"]),
+            (["1", "2", "-4"], ["A equação é do primeiro grau", "2.00"]),
+        ],
+    )
+    def test_grau_1(monkeypatch: MonkeyPatch, test_input: list[str], expected_output: list[str]):
+        mocked_input = lambda prompt="": test_input.pop(0)
+    
+        mocked_stdout = io.StringIO()
+    
+        with monkeypatch.context() as m:
+            m.setattr(builtins, "input", mocked_input)
+            m.setattr(sys, "stdout", mocked_stdout)
+    
+            sys.modules.pop("main", None)
+            importlib.import_module(name="main", package="files")
+    
+        for output in expected_output:
+>           assert output in mocked_stdout.getvalue().strip()
+E           AssertionError: assert 'A equação é do primeiro grau' in 'Equação do primeiro grau\no valor da raiz é 2.00'
+E            +  where 'Equação do primeiro grau\no valor da raiz é 2.00' = <built-in method strip of str object at 0x7f94ac1c7830>()
+E            +    where <built-in method strip of str object at 0x7f94ac1c7830> = 'Equação do primeiro grau\no valor da raiz é 2.00\n'.strip
+E            +      where 'Equação do primeiro grau\no valor da raiz é 2.00\n' = <built-in method getvalue of _io.StringIO object at 0x7f94ac1a7010>()
+E            +        where <built-in method getvalue of _io.StringIO object at 0x7f94ac1a7010> = <_io.StringIO object at 0x7f94ac1a7010>.getvalue
+
+test_grau_1.py:56: AssertionError
+__________________ test_grau_1[test_input5-expected_output5] ___________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f94ac1cc400>
+test_input = [], expected_output = ['A equação é do primeiro grau', '2.00']
+
+    @pytest.mark.parametrize(
+        "test_input, expected_output",
+        [
+            (["1", "1", "0"], ["A equação é do primeiro grau", "0.00"]),
+            (["1", "2", "0"], ["A equação é do primeiro grau", "0.00"]),
+            (["1", "10", "0"], ["A equação é do primeiro grau", "0.00"]),
+            (["1", "1", "-5"], ["A equação é do primeiro grau", "5.00"]),
+            (["1", "2", "4"], ["A equação é do primeiro grau", "-2.00"]),
+            (["1", "2", "-4"], ["A equação é do primeiro grau", "2.00"]),
+        ],
+    )
+    def test_grau_1(monkeypatch: MonkeyPatch, test_input: list[str], expected_output: list[str]):
+        mocked_input = lambda prompt="": test_input.pop(0)
+    
+        mocked_stdout = io.StringIO()
+    
+        with monkeypatch.context() as m:
+            m.setattr(builtins, "input", mocked_input)
+            m.setattr(sys, "stdout", mocked_stdout)
+    
+            sys.modules.pop("main", None)
+            importlib.import_module(name="main", package="files")
+    
+        for output in expected_output:
+>           assert output in mocked_stdout.getvalue().strip()
+E           AssertionError: assert 'A equação é do primeiro grau' in 'Equação do primeiro grau\no valor da raiz é -2.00'
+E            +  where 'Equação do primeiro grau\no valor da raiz é -2.00' = <built-in method strip of str object at 0x7f94ac1c7a30>()
+E            +    where <built-in method strip of str object at 0x7f94ac1c7a30> = 'Equação do primeiro grau\no valor da raiz é -2.00\n'.strip
+E            +      where 'Equação do primeiro grau\no valor da raiz é -2.00\n' = <built-in method getvalue of _io.StringIO object at 0x7f94ac1a7a30>()
+E            +        where <built-in method getvalue of _io.StringIO object at 0x7f94ac1a7a30> = <_io.StringIO object at 0x7f94ac1a7a30>.getvalue
+
+test_grau_1.py:56: AssertionError
+________________ test_grau_2_a_0[test_input0-expected_output0] _________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f94ac310b80>
+test_input = []
+expected_output = ['A equação é do segundo grau', 'Valor de a inválido']
+
+    @pytest.mark.parametrize(
+        "test_input, expected_output",
+        [
+            (["2", "0"], ["A equação é do segundo grau", "Valor de a inválido"]),
+        ],
+    )
+    def test_grau_2_a_0(monkeypatch: MonkeyPatch, test_input: list[str], expected_output: list[str]):
+        mocked_input = lambda prompt="": test_input.pop(0)
+    
+        mocked_stdout = io.StringIO()
+    
+        with monkeypatch.context() as m:
+            m.setattr(builtins, "input", mocked_input)
+            m.setattr(sys, "stdout", mocked_stdout)
+    
+            sys.modules.pop("main", None)
+            importlib.import_module(name="main", package="files")
+    
+        for output in expected_output:
+>           assert output in mocked_stdout.getvalue().strip()
+E           AssertionError: assert 'A equação é do segundo grau' in 'Equação do segundo grau.\nvalor Inválido!'
+E            +  where 'Equação do segundo grau.\nvalor Inválido!' = <built-in method strip of str object at 0x7f94ac1c7cb0>()
+E            +    where <built-in method strip of str object at 0x7f94ac1c7cb0> = 'Equação do segundo grau.\nvalor Inválido!\n'.strip
+E            +      where 'Equação do segundo grau.\nvalor Inválido!\n' = <built-in method getvalue of _io.StringIO object at 0x7f94ac1a7760>()
+E            +        where <built-in method getvalue of _io.StringIO object at 0x7f94ac1a7760> = <_io.StringIO object at 0x7f94ac1a7760>.getvalue
+
+test_grau_2.py:29: AssertionError
+__________________ test_grau_2[test_input0-expected_output0] ___________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f94ac20e740>
+test_input = []
+expected_output = ['A equação é do segundo grau', 'A equação possui uma raiz real', 'A equação possui apenas uma raiz real', '0.00']
+
+    @pytest.mark.parametrize(
+        "test_input, expected_output",
+        [
+            (["2", "1", "0", "0"], ["A equação é do segundo grau",
+                                    "A equação possui uma raiz real", "A equação possui apenas uma raiz real", "0.00"]),
+            (["2", "1", "0", "1"], ["A equação é do segundo grau",
+                                    "A equação não possui raízes reais"]),
+            (["2", "1", "0", "-1"], ["A equação é do segundo grau",
+                                     "A equação possui duas raízes reais", "-1.00", "1.00"]),
+            (["2", "1", "1", "0"], ["A equação é do segundo grau",
+                                    "A equação possui duas raízes reais", "-1.00", "0.00"]),
+            (["2", "1", "1", "1"], ["A equação é do segundo grau",
+                                    "A equação não possui raízes reais"]),
+            (["2", "1", "2", "0"], ["A equação é do segundo grau",
+                                    "A equação possui duas raízes reais", "-2.00", "0.00"]),
+            (["2", "2", "0", "0"], ["A equação é do segundo grau",
+                                    "A equação possui uma raiz real", "A equação possui apenas uma raiz real", "0.00"]),
+        ]
+    )
+    def test_grau_2(monkeypatch: MonkeyPatch, test_input: list[str], expected_output: list[str]):
+        mocked_input = lambda prompt="": test_input.pop(0)
+    
+        mocked_stdout = io.StringIO()
+    
+        with monkeypatch.context() as m:
+            m.setattr(builtins, "input", mocked_input)
+            m.setattr(sys, "stdout", mocked_stdout)
+    
+            sys.modules.pop("main", None)
+            importlib.import_module(name="main", package="files")
+    
+        for output in expected_output:
+>           assert output in mocked_stdout.getvalue().strip()
+E           AssertionError: assert 'A equação é do segundo grau' in 'Equação do segundo grau.\nA Equação possui apenas uma raiz real-0.00'
+E            +  where 'Equação do segundo grau.\nA Equação possui apenas uma raiz real-0.00' = <built-in method strip of str object at 0x7f94ac1a77e0>()
+E            +    where <built-in method strip of str object at 0x7f94ac1a77e0> = 'Equação do segundo grau.\nA Equação possui apenas uma raiz real-0.00\n'.strip
+E            +      where 'Equação do segundo grau.\nA Equação possui apenas uma raiz real-0.00\n' = <built-in method getvalue of _io.StringIO object at 0x7f94ac1a7f40>()
+E            +        where <built-in method getvalue of _io.StringIO object at 0x7f94ac1a7f40> = <_io.StringIO object at 0x7f94ac1a7f40>.getvalue
+
+test_grau_2.py:64: AssertionError
+__________________ test_grau_2[test_input1-expected_output1] ___________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f94ac3112d0>
+test_input = []
+expected_output = ['A equação é do segundo grau', 'A equação não possui raízes reais']
+
+    @pytest.mark.parametrize(
+        "test_input, expected_output",
+        [
+            (["2", "1", "0", "0"], ["A equação é do segundo grau",
+                                    "A equação possui uma raiz real", "A equação possui apenas uma raiz real", "0.00"]),
+            (["2", "1", "0", "1"], ["A equação é do segundo grau",
+                                    "A equação não possui raízes reais"]),
+            (["2", "1", "0", "-1"], ["A equação é do segundo grau",
+                                     "A equação possui duas raízes reais", "-1.00", "1.00"]),
+            (["2", "1", "1", "0"], ["A equação é do segundo grau",
+                                    "A equação possui duas raízes reais", "-1.00", "0.00"]),
+            (["2", "1", "1", "1"], ["A equação é do segundo grau",
+                                    "A equação não possui raízes reais"]),
+            (["2", "1", "2", "0"], ["A equação é do segundo grau",
+                                    "A equação possui duas raízes reais", "-2.00", "0.00"]),
+            (["2", "2", "0", "0"], ["A equação é do segundo grau",
+                                    "A equação possui uma raiz real", "A equação possui apenas uma raiz real", "0.00"]),
+        ]
+    )
+    def test_grau_2(monkeypatch: MonkeyPatch, test_input: list[str], expected_output: list[str]):
+        mocked_input = lambda prompt="": test_input.pop(0)
+    
+        mocked_stdout = io.StringIO()
+    
+        with monkeypatch.context() as m:
+            m.setattr(builtins, "input", mocked_input)
+            m.setattr(sys, "stdout", mocked_stdout)
+    
+            sys.modules.pop("main", None)
+            importlib.import_module(name="main", package="files")
+    
+        for output in expected_output:
+>           assert output in mocked_stdout.getvalue().strip()
+E           AssertionError: assert 'A equação é do segundo grau' in 'Equação do segundo grau.\nA Equação não possui raízes reais'
+E            +  where 'Equação do segundo grau.\nA Equação não possui raízes reais' = <built-in method strip of str object at 0x7f94ac1a7360>()
+E            +    where <built-in method strip of str object at 0x7f94ac1a7360> = 'Equação do segundo grau.\nA Equação não possui raízes reais\n'.strip
+E            +      where 'Equação do segundo grau.\nA Equação não possui raízes reais\n' = <built-in method getvalue of _io.StringIO object at 0x7f94ac214700>()
+E            +        where <built-in method getvalue of _io.StringIO object at 0x7f94ac214700> = <_io.StringIO object at 0x7f94ac214700>.getvalue
+
+test_grau_2.py:64: AssertionError
+__________________ test_grau_2[test_input2-expected_output2] ___________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f94ac20efb0>
+test_input = []
+expected_output = ['A equação é do segundo grau', 'A equação possui duas raízes reais', '-1.00', '1.00']
+
+    @pytest.mark.parametrize(
+        "test_input, expected_output",
+        [
+            (["2", "1", "0", "0"], ["A equação é do segundo grau",
+                                    "A equação possui uma raiz real", "A equação possui apenas uma raiz real", "0.00"]),
+            (["2", "1", "0", "1"], ["A equação é do segundo grau",
+                                    "A equação não possui raízes reais"]),
+            (["2", "1", "0", "-1"], ["A equação é do segundo grau",
+                                     "A equação possui duas raízes reais", "-1.00", "1.00"]),
+            (["2", "1", "1", "0"], ["A equação é do segundo grau",
+                                    "A equação possui duas raízes reais", "-1.00", "0.00"]),
+            (["2", "1", "1", "1"], ["A equação é do segundo grau",
+                                    "A equação não possui raízes reais"]),
+            (["2", "1", "2", "0"], ["A equação é do segundo grau",
+                                    "A equação possui duas raízes reais", "-2.00", "0.00"]),
+            (["2", "2", "0", "0"], ["A equação é do segundo grau",
+                                    "A equação possui uma raiz real", "A equação possui apenas uma raiz real", "0.00"]),
+        ]
+    )
+    def test_grau_2(monkeypatch: MonkeyPatch, test_input: list[str], expected_output: list[str]):
+        mocked_input = lambda prompt="": test_input.pop(0)
+    
+        mocked_stdout = io.StringIO()
+    
+        with monkeypatch.context() as m:
+            m.setattr(builtins, "input", mocked_input)
+            m.setattr(sys, "stdout", mocked_stdout)
+    
+            sys.modules.pop("main", None)
+            importlib.import_module(name="main", package="files")
+    
+        for output in expected_output:
+>           assert output in mocked_stdout.getvalue().strip()
+E           AssertionError: assert 'A equação é do segundo grau' in 'Equação do segundo grau.\n`A Equação possui duas raízes reais-1.00 e 1.00'
+E            +  where 'Equação do segundo grau.\n`A Equação possui duas raízes reais-1.00 e 1.00' = <built-in method strip of str object at 0x7f94ac2103f0>()
+E            +    where <built-in method strip of str object at 0x7f94ac2103f0> = 'Equação do segundo grau.\n`A Equação possui duas raízes reais-1.00 e 1.00 \n'.strip
+E            +      where 'Equação do segundo grau.\n`A Equação possui duas raízes reais-1.00 e 1.00 \n' = <built-in method getvalue of _io.StringIO object at 0x7f94ac214dc0>()
+E            +        where <built-in method getvalue of _io.StringIO object at 0x7f94ac214dc0> = <_io.StringIO object at 0x7f94ac214dc0>.getvalue
+
+test_grau_2.py:64: AssertionError
+__________________ test_grau_2[test_input3-expected_output3] ___________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f94ac20ee00>
+test_input = []
+expected_output = ['A equação é do segundo grau', 'A equação possui duas raízes reais', '-1.00', '0.00']
+
+    @pytest.mark.parametrize(
+        "test_input, expected_output",
+        [
+            (["2", "1", "0", "0"], ["A equação é do segundo grau",
+                                    "A equação possui uma raiz real", "A equação possui apenas uma raiz real", "0.00"]),
+            (["2", "1", "0", "1"], ["A equação é do segundo grau",
+                                    "A equação não possui raízes reais"]),
+            (["2", "1", "0", "-1"], ["A equação é do segundo grau",
+                                     "A equação possui duas raízes reais", "-1.00", "1.00"]),
+            (["2", "1", "1", "0"], ["A equação é do segundo grau",
+                                    "A equação possui duas raízes reais", "-1.00", "0.00"]),
+            (["2", "1", "1", "1"], ["A equação é do segundo grau",
+                                    "A equação não possui raízes reais"]),
+            (["2", "1", "2", "0"], ["A equação é do segundo grau",
+                                    "A equação possui duas raízes reais", "-2.00", "0.00"]),
+            (["2", "2", "0", "0"], ["A equação é do segundo grau",
+                                    "A equação possui uma raiz real", "A equação possui apenas uma raiz real", "0.00"]),
+        ]
+    )
+    def test_grau_2(monkeypatch: MonkeyPatch, test_input: list[str], expected_output: list[str]):
+        mocked_input = lambda prompt="": test_input.pop(0)
+    
+        mocked_stdout = io.StringIO()
+    
+        with monkeypatch.context() as m:
+            m.setattr(builtins, "input", mocked_input)
+            m.setattr(sys, "stdout", mocked_stdout)
+    
+            sys.modules.pop("main", None)
+            importlib.import_module(name="main", package="files")
+    
+        for output in expected_output:
+>           assert output in mocked_stdout.getvalue().strip()
+E           AssertionError: assert 'A equação é do segundo grau' in 'Equação do segundo grau.\n`A Equação possui duas raízes reais-1.00 e 0.00'
+E            +  where 'Equação do segundo grau.\n`A Equação possui duas raízes reais-1.00 e 0.00' = <built-in method strip of str object at 0x7f94ac210710>()
+E            +    where <built-in method strip of str object at 0x7f94ac210710> = 'Equação do segundo grau.\n`A Equação possui duas raízes reais-1.00 e 0.00 \n'.strip
+E            +      where 'Equação do segundo grau.\n`A Equação possui duas raízes reais-1.00 e 0.00 \n' = <built-in method getvalue of _io.StringIO object at 0x7f94ac2153f0>()
+E            +        where <built-in method getvalue of _io.StringIO object at 0x7f94ac2153f0> = <_io.StringIO object at 0x7f94ac2153f0>.getvalue
+
+test_grau_2.py:64: AssertionError
+__________________ test_grau_2[test_input4-expected_output4] ___________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f94ac20d9c0>
+test_input = []
+expected_output = ['A equação é do segundo grau', 'A equação não possui raízes reais']
+
+    @pytest.mark.parametrize(
+        "test_input, expected_output",
+        [
+            (["2", "1", "0", "0"], ["A equação é do segundo grau",
+                                    "A equação possui uma raiz real", "A equação possui apenas uma raiz real", "0.00"]),
+            (["2", "1", "0", "1"], ["A equação é do segundo grau",
+                                    "A equação não possui raízes reais"]),
+            (["2", "1", "0", "-1"], ["A equação é do segundo grau",
+                                     "A equação possui duas raízes reais", "-1.00", "1.00"]),
+            (["2", "1", "1", "0"], ["A equação é do segundo grau",
+                                    "A equação possui duas raízes reais", "-1.00", "0.00"]),
+            (["2", "1", "1", "1"], ["A equação é do segundo grau",
+                                    "A equação não possui raízes reais"]),
+            (["2", "1", "2", "0"], ["A equação é do segundo grau",
+                                    "A equação possui duas raízes reais", "-2.00", "0.00"]),
+            (["2", "2", "0", "0"], ["A equação é do segundo grau",
+                                    "A equação possui uma raiz real", "A equação possui apenas uma raiz real", "0.00"]),
+        ]
+    )
+    def test_grau_2(monkeypatch: MonkeyPatch, test_input: list[str], expected_output: list[str]):
+        mocked_input = lambda prompt="": test_input.pop(0)
+    
+        mocked_stdout = io.StringIO()
+    
+        with monkeypatch.context() as m:
+            m.setattr(builtins, "input", mocked_input)
+            m.setattr(sys, "stdout", mocked_stdout)
+    
+            sys.modules.pop("main", None)
+            importlib.import_module(name="main", package="files")
+    
+        for output in expected_output:
+>           assert output in mocked_stdout.getvalue().strip()
+E           AssertionError: assert 'A equação é do segundo grau' in 'Equação do segundo grau.\nA Equação não possui raízes reais'
+E            +  where 'Equação do segundo grau.\nA Equação não possui raízes reais' = <built-in method strip of str object at 0x7f94ac215470>()
+E            +    where <built-in method strip of str object at 0x7f94ac215470> = 'Equação do segundo grau.\nA Equação não possui raízes reais\n'.strip
+E            +      where 'Equação do segundo grau.\nA Equação não possui raízes reais\n' = <built-in method getvalue of _io.StringIO object at 0x7f94ac215990>()
+E            +        where <built-in method getvalue of _io.StringIO object at 0x7f94ac215990> = <_io.StringIO object at 0x7f94ac215990>.getvalue
+
+test_grau_2.py:64: AssertionError
+__________________ test_grau_2[test_input5-expected_output5] ___________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f94ac20cf10>
+test_input = []
+expected_output = ['A equação é do segundo grau', 'A equação possui duas raízes reais', '-2.00', '0.00']
+
+    @pytest.mark.parametrize(
+        "test_input, expected_output",
+        [
+            (["2", "1", "0", "0"], ["A equação é do segundo grau",
+                                    "A equação possui uma raiz real", "A equação possui apenas uma raiz real", "0.00"]),
+            (["2", "1", "0", "1"], ["A equação é do segundo grau",
+                                    "A equação não possui raízes reais"]),
+            (["2", "1", "0", "-1"], ["A equação é do segundo grau",
+                                     "A equação possui duas raízes reais", "-1.00", "1.00"]),
+            (["2", "1", "1", "0"], ["A equação é do segundo grau",
+                                    "A equação possui duas raízes reais", "-1.00", "0.00"]),
+            (["2", "1", "1", "1"], ["A equação é do segundo grau",
+                                    "A equação não possui raízes reais"]),
+            (["2", "1", "2", "0"], ["A equação é do segundo grau",
+                                    "A equação possui duas raízes reais", "-2.00", "0.00"]),
+            (["2", "2", "0", "0"], ["A equação é do segundo grau",
+                                    "A equação possui uma raiz real", "A equação possui apenas uma raiz real", "0.00"]),
+        ]
+    )
+    def test_grau_2(monkeypatch: MonkeyPatch, test_input: list[str], expected_output: list[str]):
+        mocked_input = lambda prompt="": test_input.pop(0)
+    
+        mocked_stdout = io.StringIO()
+    
+        with monkeypatch.context() as m:
+            m.setattr(builtins, "input", mocked_input)
+            m.setattr(sys, "stdout", mocked_stdout)
+    
+            sys.modules.pop("main", None)
+            importlib.import_module(name="main", package="files")
+    
+        for output in expected_output:
+>           assert output in mocked_stdout.getvalue().strip()
+E           AssertionError: assert 'A equação é do segundo grau' in 'Equação do segundo grau.\n`A Equação possui duas raízes reais-2.00 e 0.00'
+E            +  where 'Equação do segundo grau.\n`A Equação possui duas raízes reais-2.00 e 0.00' = <built-in method strip of str object at 0x7f94ac210c10>()
+E            +    where <built-in method strip of str object at 0x7f94ac210c10> = 'Equação do segundo grau.\n`A Equação possui duas raízes reais-2.00 e 0.00 \n'.strip
+E            +      where 'Equação do segundo grau.\n`A Equação possui duas raízes reais-2.00 e 0.00 \n' = <built-in method getvalue of _io.StringIO object at 0x7f94ac216050>()
+E            +        where <built-in method getvalue of _io.StringIO object at 0x7f94ac216050> = <_io.StringIO object at 0x7f94ac216050>.getvalue
+
+test_grau_2.py:64: AssertionError
+__________________ test_grau_2[test_input6-expected_output6] ___________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f94ac20cfa0>
+test_input = []
+expected_output = ['A equação é do segundo grau', 'A equação possui uma raiz real', 'A equação possui apenas uma raiz real', '0.00']
+
+    @pytest.mark.parametrize(
+        "test_input, expected_output",
+        [
+            (["2", "1", "0", "0"], ["A equação é do segundo grau",
+                                    "A equação possui uma raiz real", "A equação possui apenas uma raiz real", "0.00"]),
+            (["2", "1", "0", "1"], ["A equação é do segundo grau",
+                                    "A equação não possui raízes reais"]),
+            (["2", "1", "0", "-1"], ["A equação é do segundo grau",
+                                     "A equação possui duas raízes reais", "-1.00", "1.00"]),
+            (["2", "1", "1", "0"], ["A equação é do segundo grau",
+                                    "A equação possui duas raízes reais", "-1.00", "0.00"]),
+            (["2", "1", "1", "1"], ["A equação é do segundo grau",
+                                    "A equação não possui raízes reais"]),
+            (["2", "1", "2", "0"], ["A equação é do segundo grau",
+                                    "A equação possui duas raízes reais", "-2.00", "0.00"]),
+            (["2", "2", "0", "0"], ["A equação é do segundo grau",
+                                    "A equação possui uma raiz real", "A equação possui apenas uma raiz real", "0.00"]),
+        ]
+    )
+    def test_grau_2(monkeypatch: MonkeyPatch, test_input: list[str], expected_output: list[str]):
+        mocked_input = lambda prompt="": test_input.pop(0)
+    
+        mocked_stdout = io.StringIO()
+    
+        with monkeypatch.context() as m:
+            m.setattr(builtins, "input", mocked_input)
+            m.setattr(sys, "stdout", mocked_stdout)
+    
+            sys.modules.pop("main", None)
+            importlib.import_module(name="main", package="files")
+    
+        for output in expected_output:
+>           assert output in mocked_stdout.getvalue().strip()
+E           AssertionError: assert 'A equação é do segundo grau' in 'Equação do segundo grau.\nA Equação possui apenas uma raiz real-0.00'
+E            +  where 'Equação do segundo grau.\nA Equação possui apenas uma raiz real-0.00' = <built-in method strip of str object at 0x7f94ac2160d0>()
+E            +    where <built-in method strip of str object at 0x7f94ac2160d0> = 'Equação do segundo grau.\nA Equação possui apenas uma raiz real-0.00\n'.strip
+E            +      where 'Equação do segundo grau.\nA Equação possui apenas uma raiz real-0.00\n' = <built-in method getvalue of _io.StringIO object at 0x7f94ac216680>()
+E            +        where <built-in method getvalue of _io.StringIO object at 0x7f94ac216680> = <_io.StringIO object at 0x7f94ac216680>.getvalue
+
+test_grau_2.py:64: AssertionError
+___________________ test_grau_invalido[-1-Grau inv\xe1lido] ____________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f94ac310e80>
+test_input = '-1', expected_output = 'Grau inválido'
+
+    @pytest.mark.parametrize(
+        "test_input, expected_output",
+        [
+            ("-1", "Grau inválido"),
+            ("-3", "Grau inválido"),
+            ("0", "Grau inválido"),
+            ("3", "Grau inválido"),
+            ("10", "Grau inválido"),
+        ],
+    )
+    def test_grau_invalido(monkeypatch: MonkeyPatch, test_input: str, expected_output: str):
+        mocked_input = lambda prompt="": test_input
+        mocked_stdout = io.StringIO()
+    
+        with monkeypatch.context() as m:
+            m.setattr(builtins, "input", mocked_input)
+            m.setattr(sys, "stdout", mocked_stdout)
+    
+            sys.modules.pop("main", None)
+            importlib.import_module(name="main", package="files")
+    
+>       assert expected_output in mocked_stdout.getvalue().strip()
+E       AssertionError: assert 'Grau inválido' in 'Grau Inválido'
+E        +  where 'Grau Inválido' = <built-in method strip of str object at 0x7f94ac35ac10>()
+E        +    where <built-in method strip of str object at 0x7f94ac35ac10> = 'Grau Inválido\n'.strip
+E        +      where 'Grau Inválido\n' = <built-in method getvalue of _io.StringIO object at 0x7f94ac1a77f0>()
+E        +        where <built-in method getvalue of _io.StringIO object at 0x7f94ac1a77f0> = <_io.StringIO object at 0x7f94ac1a77f0>.getvalue
+
+test_grau_invalido.py:31: AssertionError
+___________________ test_grau_invalido[-3-Grau inv\xe1lido] ____________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f94ac1cfe20>
+test_input = '-3', expected_output = 'Grau inválido'
+
+    @pytest.mark.parametrize(
+        "test_input, expected_output",
+        [
+            ("-1", "Grau inválido"),
+            ("-3", "Grau inválido"),
+            ("0", "Grau inválido"),
+            ("3", "Grau inválido"),
+            ("10", "Grau inválido"),
+        ],
+    )
+    def test_grau_invalido(monkeypatch: MonkeyPatch, test_input: str, expected_output: str):
+        mocked_input = lambda prompt="": test_input
+        mocked_stdout = io.StringIO()
+    
+        with monkeypatch.context() as m:
+            m.setattr(builtins, "input", mocked_input)
+            m.setattr(sys, "stdout", mocked_stdout)
+    
+            sys.modules.pop("main", None)
+            importlib.import_module(name="main", package="files")
+    
+>       assert expected_output in mocked_stdout.getvalue().strip()
+E       AssertionError: assert 'Grau inválido' in 'Grau Inválido'
+E        +  where 'Grau Inválido' = <built-in method strip of str object at 0x7f94ac205350>()
+E        +    where <built-in method strip of str object at 0x7f94ac205350> = 'Grau Inválido\n'.strip
+E        +      where 'Grau Inválido\n' = <built-in method getvalue of _io.StringIO object at 0x7f94ac1a7a30>()
+E        +        where <built-in method getvalue of _io.StringIO object at 0x7f94ac1a7a30> = <_io.StringIO object at 0x7f94ac1a7a30>.getvalue
+
+test_grau_invalido.py:31: AssertionError
+____________________ test_grau_invalido[0-Grau inv\xe1lido] ____________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f94ac17d5a0>
+test_input = '0', expected_output = 'Grau inválido'
+
+    @pytest.mark.parametrize(
+        "test_input, expected_output",
+        [
+            ("-1", "Grau inválido"),
+            ("-3", "Grau inválido"),
+            ("0", "Grau inválido"),
+            ("3", "Grau inválido"),
+            ("10", "Grau inválido"),
+        ],
+    )
+    def test_grau_invalido(monkeypatch: MonkeyPatch, test_input: str, expected_output: str):
+        mocked_input = lambda prompt="": test_input
+        mocked_stdout = io.StringIO()
+    
+        with monkeypatch.context() as m:
+            m.setattr(builtins, "input", mocked_input)
+            m.setattr(sys, "stdout", mocked_stdout)
+    
+            sys.modules.pop("main", None)
+            importlib.import_module(name="main", package="files")
+    
+>       assert expected_output in mocked_stdout.getvalue().strip()
+E       AssertionError: assert 'Grau inválido' in 'Grau Inválido'
+E        +  where 'Grau Inválido' = <built-in method strip of str object at 0x7f94ac2055f0>()
+E        +    where <built-in method strip of str object at 0x7f94ac2055f0> = 'Grau Inválido\n'.strip
+E        +      where 'Grau Inválido\n' = <built-in method getvalue of _io.StringIO object at 0x7f94ac1a7130>()
+E        +        where <built-in method getvalue of _io.StringIO object at 0x7f94ac1a7130> = <_io.StringIO object at 0x7f94ac1a7130>.getvalue
+
+test_grau_invalido.py:31: AssertionError
+____________________ test_grau_invalido[3-Grau inv\xe1lido] ____________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f94ac310b80>
+test_input = '3', expected_output = 'Grau inválido'
+
+    @pytest.mark.parametrize(
+        "test_input, expected_output",
+        [
+            ("-1", "Grau inválido"),
+            ("-3", "Grau inválido"),
+            ("0", "Grau inválido"),
+            ("3", "Grau inválido"),
+            ("10", "Grau inválido"),
+        ],
+    )
+    def test_grau_invalido(monkeypatch: MonkeyPatch, test_input: str, expected_output: str):
+        mocked_input = lambda prompt="": test_input
+        mocked_stdout = io.StringIO()
+    
+        with monkeypatch.context() as m:
+            m.setattr(builtins, "input", mocked_input)
+            m.setattr(sys, "stdout", mocked_stdout)
+    
+            sys.modules.pop("main", None)
+            importlib.import_module(name="main", package="files")
+    
+>       assert expected_output in mocked_stdout.getvalue().strip()
+E       AssertionError: assert 'Grau inválido' in 'Grau Inválido'
+E        +  where 'Grau Inválido' = <built-in method strip of str object at 0x7f94ac35ac10>()
+E        +    where <built-in method strip of str object at 0x7f94ac35ac10> = 'Grau Inválido\n'.strip
+E        +      where 'Grau Inválido\n' = <built-in method getvalue of _io.StringIO object at 0x7f94ac1a75b0>()
+E        +        where <built-in method getvalue of _io.StringIO object at 0x7f94ac1a75b0> = <_io.StringIO object at 0x7f94ac1a75b0>.getvalue
+
+test_grau_invalido.py:31: AssertionError
+___________________ test_grau_invalido[10-Grau inv\xe1lido] ____________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f94ac17f3d0>
+test_input = '10', expected_output = 'Grau inválido'
+
+    @pytest.mark.parametrize(
+        "test_input, expected_output",
+        [
+            ("-1", "Grau inválido"),
+            ("-3", "Grau inválido"),
+            ("0", "Grau inválido"),
+            ("3", "Grau inválido"),
+            ("10", "Grau inválido"),
+        ],
+    )
+    def test_grau_invalido(monkeypatch: MonkeyPatch, test_input: str, expected_output: str):
+        mocked_input = lambda prompt="": test_input
+        mocked_stdout = io.StringIO()
+    
+        with monkeypatch.context() as m:
+            m.setattr(builtins, "input", mocked_input)
+            m.setattr(sys, "stdout", mocked_stdout)
+    
+            sys.modules.pop("main", None)
+            importlib.import_module(name="main", package="files")
+    
+>       assert expected_output in mocked_stdout.getvalue().strip()
+E       AssertionError: assert 'Grau inválido' in 'Grau Inválido'
+E        +  where 'Grau Inválido' = <built-in method strip of str object at 0x7f94ac205a10>()
+E        +    where <built-in method strip of str object at 0x7f94ac205a10> = 'Grau Inválido\n'.strip
+E        +      where 'Grau Inválido\n' = <built-in method getvalue of _io.StringIO object at 0x7f94ac374790>()
+E        +        where <built-in method getvalue of _io.StringIO object at 0x7f94ac374790> = <_io.StringIO object at 0x7f94ac374790>.getvalue
+
+test_grau_invalido.py:31: AssertionError
+=========================== short test summary info ============================
+FAILED test_grau_1.py::test_grau_1_a_0[test_input0-expected_output0] - Assert...
+FAILED test_grau_1.py::test_grau_1[test_input0-expected_output0] - AssertionE...
+FAILED test_grau_1.py::test_grau_1[test_input1-expected_output1] - AssertionE...
+FAILED test_grau_1.py::test_grau_1[test_input2-expected_output2] - AssertionE...
+FAILED test_grau_1.py::test_grau_1[test_input3-expected_output3] - AssertionE...
+FAILED test_grau_1.py::test_grau_1[test_input4-expected_output4] - AssertionE...
+FAILED test_grau_1.py::test_grau_1[test_input5-expected_output5] - AssertionE...
+FAILED test_grau_2.py::test_grau_2_a_0[test_input0-expected_output0] - Assert...
+FAILED test_grau_2.py::test_grau_2[test_input0-expected_output0] - AssertionE...
+FAILED test_grau_2.py::test_grau_2[test_input1-expected_output1] - AssertionE...
+FAILED test_grau_2.py::test_grau_2[test_input2-expected_output2] - AssertionE...
+FAILED test_grau_2.py::test_grau_2[test_input3-expected_output3] - AssertionE...
+FAILED test_grau_2.py::test_grau_2[test_input4-expected_output4] - AssertionE...
+FAILED test_grau_2.py::test_grau_2[test_input5-expected_output5] - AssertionE...
+FAILED test_grau_2.py::test_grau_2[test_input6-expected_output6] - AssertionE...
+FAILED test_grau_invalido.py::test_grau_invalido[-1-Grau inv\xe1lido] - Asser...
+FAILED test_grau_invalido.py::test_grau_invalido[-3-Grau inv\xe1lido] - Asser...
+FAILED test_grau_invalido.py::test_grau_invalido[0-Grau inv\xe1lido] - Assert...
+FAILED test_grau_invalido.py::test_grau_invalido[3-Grau inv\xe1lido] - Assert...
+FAILED test_grau_invalido.py::test_grau_invalido[10-Grau inv\xe1lido] - Asser...
+============================== 20 failed in 0.14s ==============================
